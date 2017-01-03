@@ -51,15 +51,21 @@
     <input class="btn btn-default" type=submit value=查詢>
   </form>
 </p>
-<form >
-  <table border="1">
+<table border="1">
+  <tr>
+  <th>開始時間</th>
+  <th>計畫主題</th>
+  <th>合作產商</th>
+  </tr>
+  {% for project in projects %}
     <tr>
-      <th>開始時間</th>
-      <th>計畫主題</th>
-      <th>合作產商</th>
+      <td>{{ project.time }}</td>
+      <td><a href="{% url 'project:projectRead' project.id %}">{{ project.title }}</a></td>
+      <td>{{ project.company }}</td>
     </tr>
-  </table>
-</form>
+  {% endfor %}
+</table> 
+<p><a class="btn" href="{% url 'project:projectCreate' %}">新增</a></p>
 
 <br>
 
